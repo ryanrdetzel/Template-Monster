@@ -1,4 +1,4 @@
-(function(templateLoader, $, undefined){
+(function(templateLoader){
   templateLoader.templates = {};
 
   templateLoader.getTemplate = function(name){
@@ -48,7 +48,7 @@
       }
     }
 
-    jQuery.get(filename, function(data) {
+    $.get(filename, function(data) {
       var obj = {name:name, filename:filename, data:data};
       cache(obj, callback);
       saveTemplate(obj);
@@ -60,4 +60,4 @@
       localStorage.setItem(data['name'], JSON.stringify(data));
     }
   };
-})(window.templateLoader = window.templateLoader || {}, jQuery);
+})(window.templateLoader = window.templateLoader || {});
