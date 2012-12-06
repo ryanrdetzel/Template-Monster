@@ -21,7 +21,7 @@
 <script>
 
 /* On page templates still work just fine */
-template = _.template($('#template_on_page').html());
+var template = _.template($('#template_on_page').html());
 $('#on_page').html(template({'template_engine': 'underscore on page'}));
 
 /* Initial template load */
@@ -30,7 +30,7 @@ templateLoader.loadTemplates([
 ]);
 
 /* Lets use test1 now that it's loaded */
-var template = _.template(templateLoader.getTemplate('test1'));
+template = _.template(templateLoader.getTemplate('test1'));
 $('#main').html(template({'template_engine': 'underscore'}));
 
 /* Custom callback and loading on the fly.

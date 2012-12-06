@@ -6,7 +6,7 @@
       return templateLoader.templates[name]['data'];
     }
     /* Check to see if the template is on the page and load it in? */
-    /* We should fire off something to get this template */
+    return null;
   };
 
   templateLoader.loadTemplates = function(_templates){
