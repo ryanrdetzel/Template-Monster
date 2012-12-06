@@ -15,30 +15,16 @@
     }
   };
 
-  function localStorageAvailable(){
-    try {
-      return 'localStorage' in window && window['localStorage'] !== null;
-    }catch (e){
-      return false;
-    }
-  };
-
-  function cache(data, callback){
-    templateLoader.templates[data['name']] = data;
-    callback(data);
-  };
-
   templateLoader.loadTemplate = function(templateInfo){
     var name = templateInfo['name'];
     var filename = templateInfo['filename'];
     var callback = templateInfo['callback'] || function(data){};
     
-    /* Check that it's not already loaded! */
-    if (templateLoader.templates[name] && templateLoader.templates[name]['filename'] == filename){
+    if (templateLoader.templates[name] && 
+        templateLoader.templates[name]['filename'] == filename){
       callback(templateLoader.templates[name]);
       return;
     }
-    /* Checks local storage, if it's there does a version check otherwise pull from server */
     if (localStorageAvailable()){
       var data = localStorage.getItem(name);
       data = data && JSON.parse(data);
@@ -53,6 +39,19 @@
       cache(obj, callback);
       saveTemplate(obj);
     });
+  };
+
+  function localStorageAvailable(){
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    }catch (e){
+      return false;
+    }
+  };
+
+  function cache(data, callback){
+    templateLoader.templates[data['name']] = data;
+    callback(data);
   };
 
   function saveTemplate(data){
