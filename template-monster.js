@@ -1,7 +1,15 @@
 (function(templateLoader, $, undefined){
-	templateLoader.templates = {};
-	
-	templateLoader.loadTemplates = function(_templates){
+  templateLoader.templates = {};
+
+  templateLoader.getTemplate = function(name){
+    if (templateLoader.templates[name] && templateLoader.templates[name]['data']){
+      return templateLoader.templates[name]['data'];
+    }
+    /* Check to see if the template is on the page and load it in? */
+    /* We should fire off something to get this template */
+  };
+
+  templateLoader.loadTemplates = function(_templates){
 		for(var template in _templates){
 			templateLoader.loadTemplate(_templates[template]);
 		}
@@ -54,5 +62,5 @@
 			console.log("Saving local storage: " + data['name']);
 			localStorage.setItem(data['name'], JSON.stringify(data));
 		}
-	};
+  };
 })(window.templateLoader = window.templateLoader || {}, jQuery);
