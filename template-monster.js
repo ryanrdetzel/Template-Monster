@@ -24,7 +24,7 @@
   };
 
   function cache(data, callback){
-    emplateLoader.templates[data['name']] = data;
+    templateLoader.templates[data['name']] = data;
     callback(data);
   };
 
