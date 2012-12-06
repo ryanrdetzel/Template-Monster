@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Template monster</title>
+</head>
+
+<body>
+<p>This is my body</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="template-monster.js"></script>
+<script>
+
+/* Initial template load */
+templateLoader.loadTemplates([
+	{name: "test2", filename: "template1.html"},
+	{name: "test3", filename: "template2.html"}
+]);
+
+/* Custom callback and loading on the fly */
+templateLoader.loadTemplate({name:'test2', filename:'test2.template', callback:function(template){
+	console.log("Template data: " + template['data']);
+}});
+</script>
+
+
+<script type="text/template" id="template_on_page">
+	<p>This is an example of an <%=template_engine%> template. You can (and should) still include some templates directly on the page but only if they're going to be used immediately. All others you should load in.</p>
+</script>
+
+</body>
+</html>
