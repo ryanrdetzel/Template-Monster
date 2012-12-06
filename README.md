@@ -2,12 +2,12 @@
 
 A small JavaScript library that loads in templates(unserscore.js, mustache.js, dust.js) asynchronously to reduce the amount of content your initial page has.
 
-## # Dependencies
+Check out the example_* files to see it in action.
+
+### Dependencies
 
 * jQuery or zepto
 * If you want it to work on older browsers(<ie 8) you'll need json2.js (https://github.com/douglascrockford/JSON-js)
-
-Check out the example_* files to see it in action.
 
 ### Tips
 
