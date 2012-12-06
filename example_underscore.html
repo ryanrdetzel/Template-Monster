@@ -25,17 +25,17 @@ var template = _.template($('#template_on_page').html());
 $('#on_page').html(template({'template_engine': 'underscore on page'}));
 
 /* Initial template load */
-templateLoader.loadTemplates([
+templateMonster.loadTemplates([
 	{name: 'test1', filename: 'template1.html'}
 ]);
 
 /* Lets use test1 now that it's loaded */
-template = _.template(templateLoader.getTemplate('test1'));
+template = _.template(templateMonster.getTemplate('test1'));
 $('#main').html(template({'template_engine': 'underscore'}));
 
 /* Custom callback and loading on the fly.
   Load a template and render it when we get it back */
-templateLoader.loadTemplate({
+templateMonster.loadTemplate({
   name:'test2', 
   filename:'template2.html', 
   callback:function(template){
@@ -45,7 +45,7 @@ templateLoader.loadTemplate({
 });
 /* Templates are cached and in local storage, notice no server call 
    even though we're loading the same template */
-templateLoader.loadTemplate({
+templateMonster.loadTemplate({
   name:'test2', 
   filename:'template2.html', 
   callback:function(template){

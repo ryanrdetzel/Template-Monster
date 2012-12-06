@@ -1,28 +1,28 @@
-(function(templateLoader){
-  templateLoader.templates = {};
+(function(templateMonster){
+  templateMonster.templates = {};
 
-  templateLoader.getTemplate = function(name){
-    if (templateLoader.templates[name] && templateLoader.templates[name]['data']){
-      return templateLoader.templates[name]['data'];
+  templateMonster.getTemplate = function(name){
+    if (templateMonster.templates[name] && templateMonster.templates[name]['data']){
+      return templateMonster.templates[name]['data'];
     }
     /* Check to see if the template is on the page and load it in? */
     return null;
   };
 
-  templateLoader.loadTemplates = function(_templates){
+  templateMonster.loadTemplates = function(_templates){
     for(var template in _templates){
-      templateLoader.loadTemplate(_templates[template]);
+      templateMonster.loadTemplate(_templates[template]);
     }
   };
 
-  templateLoader.loadTemplate = function(templateInfo){
+  templateMonster.loadTemplate = function(templateInfo){
     var name = templateInfo['name'];
     var filename = templateInfo['filename'];
     var callback = templateInfo['callback'] || function(data){};
     
-    if (templateLoader.templates[name] && 
-        templateLoader.templates[name]['filename'] == filename){
-      callback(templateLoader.templates[name]);
+    if (templateMonster.templates[name] && 
+        templateMonster.templates[name]['filename'] == filename){
+      callback(templateMonster.templates[name]);
       return;
     }
     if (localStorageAvailable()){
@@ -50,7 +50,7 @@
   };
 
   function cache(data, callback){
-    templateLoader.templates[data['name']] = data;
+    templateMonster.templates[data['name']] = data;
     callback(data);
   };
 
@@ -59,4 +59,4 @@
       localStorage.setItem(data['name'], JSON.stringify(data));
     }
   };
-})(window.templateLoader = window.templateLoader || {});
+})(window.templateMonster = window.templateMonster || {});
