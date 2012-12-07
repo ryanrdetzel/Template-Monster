@@ -30,8 +30,14 @@ templateMonster.loadTemplates([
 ]);
 
 /* Lets use test1 now that it's loaded */
-template = _.template(templateMonster.getTemplate('test1'));
-$('#main').html(template({'template_engine': 'underscore'}));
+/* There is a race condition here and this probably wont exist here
+  but if it were on an action (button) it might. We probably need a better 
+  way to handle this */
+var template1 = templateMonster.getTemplate('test1');
+if (template1){
+  template = _.template(template1);
+  $('#main').html(template({'template_engine': 'underscore'}));
+}
 
 /* Custom callback and loading on the fly.
   Load a template and render it when we get it back */
